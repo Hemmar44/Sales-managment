@@ -8,3 +8,14 @@ header {
 	padding: 10px;
 	color: white;
 }
+
+#sorters {
+	margin-bottom: 20px;
+}
+
+#byName, #byProduct, #byInstitution, #byAdvisor {
+
+	display: none;
+	
+
+}

@@ -4,7 +4,12 @@ require_once 'Sale.php';
 
 $sale = new Sale($database);
 
+var_dump($_POST);
+
+
 if($sale->database()->submitted()) {
+
+	
 
 $sale->database()->insert('sales', [
 	"name" => $_POST["name"],
@@ -13,9 +18,11 @@ $sale->database()->insert('sales', [
 	"amount" => intval($_POST["amount"]),
 	"advisor" => $_POST["advisor"],
 	"margin" => floatval($_POST["margin"]),
+	"completed" => $sale->database()->checkCompleted(),
 	"commission" => floatval($_POST["commission"])
 	]);
 }
+
 
 
 
@@ -62,7 +69,11 @@ include("layouts/header.php");
 				    <label for="commission">Commission</label>
 				    <input type="text" class="form-control" id="commission" name="commission" readonly>
 				  </div>
-				  
+				  <div class="form-check">
+      				<label class="form-check-label">
+       				<input type="checkbox" class="form-check-input" name="completed" id="completed"> Completed?
+        			</label>
+    		      </div>
 				  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
 				</form>
 			</div>

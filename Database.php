@@ -149,6 +149,18 @@ class Database {
            return false;
        }
    }
+
+    public function checkCompleted() {
+        
+        if (isset($_POST["completed"])) {
+
+        return "yes";
+
+        }
+
+        else return "no";
+
+  }
    
        public function filter($param, $filter) {
        return filter_var($param, $filter);
@@ -165,6 +177,8 @@ class Database {
             $stmt = $this->_pdo->query("SELECT {$column} FROM {$tableName}");
             return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
+
+
        
     
 
