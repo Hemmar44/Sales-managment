@@ -25,7 +25,7 @@
 			  		<td class="Advisor"><?= $sale['advisor']; ?></td>
 			  		<td class="Margin"><?= $sale['margin']; ?></td>
 			  		<td class="Commission"><?= $sale['commission']; ?></td>
-			  		<td class="completed"><?= $sale['completed']; ?></td>
+			  		<td class="Completed"><?= $sale['completed']; ?></td>
 			  		<td class="Date"><?= date('F Y', strtotime($sale['date'])); ?></td>
 			  		</tr>
 				<?php endforeach; ?>

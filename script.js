@@ -1,4 +1,35 @@
 $(function(){
+		var yesornoValue
+		$(".yesorno").on("change", function(){
+        		yesornoValue = $(this).val()
+
+        		switch(yesornoValue) {
+    				case "No":
+       				 $(".Completed").each(function(index, element){
+       				 	if($(element).text() !== yesornoValue) {
+       				 		$(element).closest("tr").hide();
+       				 	}
+       				 	if($(element).text() === yesornoValue) {
+       				 		$(element).closest("tr").show();
+       				 	}
+       				 });
+       				break;
+    				case "Yes":
+        			 $(".Completed").each(function(index, element){
+       				 	if($(element).text() !== yesornoValue) {
+       				 		$(element).closest("tr").hide();
+       				 	}
+       				 	if($(element).text() === yesornoValue) {
+       				 		$(element).closest("tr").show();
+       				 	}
+       				 });
+        			break;
+    				default:
+        			 $(".Completed").each(function(index, element){
+       				 	$(element).closest("tr").show();
+       				 });
+        	};
+        });
 		//counts commission
 			
     		$("#margin").on("blur", function() {
@@ -102,14 +133,19 @@ $(function(){
         			});
         			
         		}
-    		});
+        	});
+        	//yes or no
+
+        	
+
+
+});
 		
         	
 
 
 
     
-});
     		
 
         

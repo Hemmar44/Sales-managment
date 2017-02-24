@@ -159,11 +159,11 @@ class Database {
         
         if (isset($_POST["completed"])) {
 
-        return "yes";
+        return "Yes";
 
         }
 
-        else return "no";
+        else return "No";
 
   }
    

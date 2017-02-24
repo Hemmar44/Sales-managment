@@ -1,5 +1,24 @@
-<div class="text-right">
+		<div class="text-right">
 		<a href="newcustomer.php">Add a customer</a>
+		</div>
+		<div id="yesno" class="form-inline">
+			<span>Completed? &nbsp</span>
+			<div class="form-check mb-2 mr-sm-2 mb-sm-0">
+	    		<label class="form-check-label">
+	      		<input class="form-check-input yesorno" type="radio" name=yesno value="Yes"> Yes
+	    		</label>
+	  		</div>
+	  		<div class="form-check mb-2 mr-sm-2 mb-sm-0">
+	    		<label class="form-check-label">
+	      		<input class="form-check-input yesorno" type="radio" name=yesno value="No"> No
+	    		</label>
+	  		</div>
+	  		<div class="form-check mb-2 mr-sm-2 mb-sm-0">
+	    		<label class="form-check-label">
+	      		<input class="form-check-input yesorno" type="radio" name=yesno value="All"> All
+	    		</label>
+	  		</div>
+
 		</div>
 		<div id="sorters">
 			<div class="form-inline">
@@ -79,6 +98,9 @@
     				</div>
 
 
+
   					
 			</div>
 		</div>
+
+		
