@@ -13,7 +13,7 @@ header {
 	margin-bottom: 20px;
 }
 
-#byName, #byProduct, #byInstitution, #byAdvisor {
+#byName, #byProduct, #byInstitution, #byAdvisor, #byAmount, #byCommission, #byMargin, #byDate {
 
 	display: none;
 	

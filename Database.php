@@ -32,6 +32,11 @@ class Database {
             $stmt->execute([$name => $value]);
             return $_one = $stmt->fetch();
     }
+
+    public function selectDistinct($tableName, $header) {
+            $stmt = $this->_pdo->query("SELECT DISTINCT {$header} FROM {$tableName}");
+            return $_all = $stmt->fetchAll();
+    }
     
     public function selectOr($tableName, $names = array()) {
             $set = '';

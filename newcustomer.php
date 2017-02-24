@@ -4,14 +4,12 @@ require_once 'Sale.php';
 
 $sale = new Sale($database);
 
-var_dump($_POST);
+//var_dump($_POST);
 
 
 if($sale->database()->submitted()) {
 
-	
-
-$sale->database()->insert('sales', [
+	$sale->database()->insert('sales', [
 	"name" => $_POST["name"],
 	"product" => $_POST["product"],
 	"institution" => $_POST["institution"],
@@ -30,8 +28,10 @@ include("layouts/header.php");
 ?>
 
 
-			<div class=col-md-8>
-
+			<div class=col-md-12>
+				<div class="text-right">
+					<a href="data.php">Browse data</a>
+				</div>
 				<h2>Enter sale data</h2>
 				<form method="post" action="#">
 				  <div class="form-group">
