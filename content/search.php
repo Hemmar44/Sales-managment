@@ -18,8 +18,10 @@
 	      		<input class="form-check-input yesorno" type="radio" name=yesno value="All"> All
 	    		</label>
 	  		</div>
-
-		</div>
+	  	</div>
+	  	<div class="right">
+	  		<span>sum: <p id="sum"></p></span>
+	  	</div>
 		<div id="sorters">
 			<div class="form-inline">
 					<label class="mr-sm-2" for="dataSelector">Search by</label>
@@ -59,7 +61,7 @@
 			  			
 			  		<div id="byAdvisor" class="search">
 	  					<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="searchByAdvisor">
-	    					<option selected>Choose...</option>
+	    					<option selected value="Choose...">Choose...</option>
 	    					<?php foreach($sale->database()->selectDistinct("sales", "advisor") as $sale): ?>
 
 	    					<option value="<?= $sale['advisor']; ?>"><?= $sale['advisor']; ?></option>
@@ -96,6 +98,7 @@
 	    					<?php endforeach; ?>
 	    				</select>	
     				</div>
+
 
 
 

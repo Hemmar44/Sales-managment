@@ -19,3 +19,14 @@ header {
 	
 
 }
+
+#sum {
+	width: 120px;
+	height: 35px;
+	border: 1px solid lightgrey;
+	border-radius:8%;
+}
+
+.right {
+	float:right;
+}
