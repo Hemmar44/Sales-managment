@@ -9,7 +9,7 @@ $sale = new Sale($database);
 
 if($sale->database()->submitted()) {
 
-	$sale->database()->insert('sales', [
+	$submit = $sale->database()->insert('sales', [
 	"name" => $_POST["name"],
 	"product" => $_POST["product"],
 	"institution" => $_POST["institution"],
@@ -19,14 +19,31 @@ if($sale->database()->submitted()) {
 	"completed" => $sale->database()->checkCompleted(),
 	"commission" => floatval($_POST["commission"])
 	]);
+	
+	if($submit) {
+		$success = $sale->success();
+	}
+	else {
+		$failure = $sale->failure();
+	}
 }
+
+
 
 
 
 
 include("layouts/header.php");
 ?>
-
+			
+			<div class="message">
+				<?php
+					if(isset($success))
+						{echo '<div class="alert alert-success" role="alert">'. $success .'</div>';}
+					if(isset($failure))
+						{echo '<div class="alert alert-danger" role="alert"><strong>' .$failure .'</strong></div>';}
+				?>
+			</div>
 
 			<div class=col-md-12>
 				<div class="text-right">

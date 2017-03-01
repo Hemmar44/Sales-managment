@@ -15,12 +15,12 @@
 	  		</div>
 	  		<div class="form-check mb-2 mr-sm-2 mb-sm-0">
 	    		<label class="form-check-label">
-	      		<input class="form-check-input yesorno" type="radio" name=yesno value="All"> All
+	      		<input class="form-check-input yesorno" type="radio" name=yesno value="All" checked="checked"> All
 	    		</label>
 	  		</div>
 	  	</div>
 	  	<div class="right">
-	  		<span>sum: <p id="sum"></p></span>
+	  		<span>sum of Commisions: </span> <p id="sum"></p>
 	  	</div>
 		<div id="sorters">
 			<div class="form-inline">

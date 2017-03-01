@@ -111,7 +111,8 @@ class Database {
             $values = array_values($fields);
             $sql = "INSERT INTO {$tableName} {$names} VALUES {$marks}";
             $stmt = $this->_pdo->prepare($sql);
-            $stmt->execute($values);
+            return $stmt->execute($values);
+
     }
     
     public function update($tableName, $id, $fields=[]) {

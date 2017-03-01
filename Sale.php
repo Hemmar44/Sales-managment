@@ -16,6 +16,16 @@ class Sale {
 
 		return $this->database;
 	}
+
+	public function success() {
+
+		return "You have successfully added new customer.";
+	}
+
+	public function failure() {
+
+		return "Something was wrong, please try again later.";
+	}
 }
 
 $database = new Database;

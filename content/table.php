@@ -1,7 +1,7 @@
 <table id="dataTable" class="table table-sm table-bordered">
 			  <thead>
 			    <tr>
-			      <th>#</th>
+			      <th>Edit <br/> Delete</th>
 			      <th class="name">Name</th>
 			      <th class="product">Product</th>
 			      <th class="institution">Institution</th>
