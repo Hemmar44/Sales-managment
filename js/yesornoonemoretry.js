@@ -4,7 +4,7 @@ $(function(){
 		var globalValue;
 		var sum = 0;
 		var tableButtons = '</button><button type="button" id="delete" class="btn btn-warning btn-sm">Delete</button>'
-		var inputValue = "";
+
 		commission();
 
 		//edit delete
@@ -95,11 +95,11 @@ $(function(){
 		
 		//yes or no
 		$(".yesorno").on("change", function(){
-				//alert(inputValue);
+				alert(globalValue);
         		yesornoValue = $(this).val()
         		var dataSelector = $("#dataSelector").val();
         		
-        		/*
+        		
         		if(dataSelector==="Product" || dataSelector==="Advisor" || dataSelector === "Date") {
         			
         			$("#searchBy" + dataSelector).val("Choose...").css("color", "red");
@@ -112,161 +112,43 @@ $(function(){
         			$("#min" + dataSelector).css("color", "red");
         			$("#max" + dataSelector).css("color", "red");
 
-        		}*/
-        	
+        		}
        			
-       				switch(yesornoValue) {
+       				 	
+
+        		switch(yesornoValue) {
     				case "No":
-    				if(globalValue === "Name" || globalValue === "Institution") {
-       				 $(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		byNameInstitution(element);
-        			 		
-       				 	}
-       				 });
-       				}
-       				else if(globalValue === "Product" || globalValue === "Advisor" || globalValue === "Date"){
-       				 $(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		byProductAdvisorDate(element);
-       				 	}
-       				 });
-       				}
-       				else if(globalValue === "Amount" || globalValue === "Margin" ||globalValue === "Commission"){
-       					$(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		
-        			 		//byProductAdvisorDate(element);
-       				 	}
-       				 });
-       				}
-       				else {
-       					//alert("else no");
-       					$(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		$(element).closest("tr").show();
-        				}
-       				 });
-        				
-        			}
-       				break;
-
-    				case "Yes":
-    				if(globalValue === "Name" || globalValue === "Institution") {
-        			 $(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		byNameInstitution(element);
-        			 		
-       				 	}
-       				 });
-       				 }
-       				 else if(globalValue === "Product" || globalValue === "Advisor" || globalValue === "Date"){
-        				$(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        					byProductAdvisorDate(element)
-        			 		
-       				 	}
-       				 });
-        			}
-        			else if(globalValue === "Amount" || globalValue === "Margin" ||globalValue === "Commission"){
-        				$(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		
-        			 		//byProductAdvisorDate(element);
-       				 	}
-       				 });
-        			}
-        			else {
-        				//alert("else yes");
-       					$(".Completed").each(function(index, element){
-       				 	if($(element).text() !== yesornoValue) {
-       				 		$(element).closest("tr").hide();
-       				 	}
-       				 	if($(element).text() === yesornoValue) {
-       				 		$(element).closest("tr").show();
-        				}
-       				 });
-        			}
-
-        			break;
     				
-    				default:
-    				if(globalValue === "Name" || globalValue === "Institution") {
-        			 $(".Completed").each(function(index, element){
-        			 	var element = $(element);
-        			 	byNameInstitution(element);
-        			 	//byProductAdvisorDate(element);
+       				 $(".Completed").each(function(index, element){
+       				 	if($(element).text() !== yesornoValue) {
+       				 		$(element).closest("tr").hide();
+       				 	}
+       				 	if($(element).text() === yesornoValue) {
+       				 		$(element).closest("tr").show();
+       				 	}
+
+       				 	
+       				 	
        				 });
-       				 //alert("Name Institution");
-        			}
-        			else if(globalValue === "Product" || globalValue === "Advisor" || globalValue === "Date"){
-        				$(".Completed").each(function(index, element){
-        				var element = $(element);
-        				byProductAdvisorDate(element);
-        			});
-        			}
-        			else if(globalValue === "Amount" || globalValue === "Margin" ||globalValue === "Commission"){
-        				
-        			}
-        			else {
-        				
-        				$("#dataTable tbody tr").show();
-        					//.each(function(){$(this).show()});
-        			}
-        			
+       				break;
+    				case "Yes":
+    				
+        			 $(".Completed").each(function(index, element){
+       				 	if($(element).text() !== yesornoValue) {
+       				 		$(element).closest("tr").hide();
+       				 	}
+       				 	if($(element).text() === yesornoValue) {
+       				 		$(element).closest("tr").show(); 
+       				 	}
+       				 });
+        			break;
+    				default:
+    				
+        			 $(".Completed").each(function(index, element){
+       				 	$(element).closest("tr").show();
+       				 });
         	};
         });
-        		function byNameInstitution(element) {
-				    $(element).closest("tr").hide();
-    			 	var text = $(element).siblings("." + globalValue).text();
-    			 		if(text.includes(inputValue)){
-   				 			$(element).closest("tr").show();
-   				 		}
-   				 	}
-        		
-
-        		function byProductAdvisorDate(element) {
-        				
-        				$(element).closest("tr").hide();
-        			 	var text = $(element).siblings("." + globalValue).text();
-        			 	
-        			 		if(text === inputValue){
-       				 			$(element).closest("tr").show();
-       				 		}
-       				 	}
-
-       			function byAmountMarginCommission(element) {
-       				
-       			}
-
-        		
 		
     	//search engine
     		
@@ -291,7 +173,7 @@ $(function(){
     			if(globalValue ==="Name" || globalValue==="Institution"){
 	    			$("#searchBy" + globalValue).on("keyup", function(){
 	    			$(this).css("color", "#000");
-	    			inputValue = $(this).val();
+	    			var value = $(this).val();
 	    			var lower = globalValue.toLowerCase();
 	    			sum = 0;
 	    			$("." + lower).css("background-color", "#E8E8E8");
@@ -306,7 +188,7 @@ $(function(){
 			        				//alert("before if" + commission);
 					        		//alert(sum);
 			        				if(yesornoValue === "Yes" || yesornoValue === "No") {
-					        			if(text.includes(inputValue) && completed === yesornoValue) {
+					        			if(text.includes(value) && completed === yesornoValue) {
 					        				commission = Number($(element).closest("tr").find(".Commission").text());
 					     					$(element).closest("tr").show();
 					     					}
@@ -323,7 +205,7 @@ $(function(){
 					        			}
 
 					        		if(yesornoValue==="All") {
-					        			if(text.includes(inputValue))
+					        			if(text.includes(value))
 					        			{
 					        				commission = Number($(element).closest("tr").find(".Commission").text());
 					        				$(element).closest("tr").show();
@@ -351,7 +233,7 @@ $(function(){
     			else if(globalValue === "Product" || globalValue === "Advisor" || globalValue === "Date") {
 	        		$("#searchBy" + globalValue).on("change", function(){
 	        		$(this).css("color", "#000");
-	        		inputValue = $(this).val();
+	        		var value = $(this).val();
 	        		var lower = globalValue.toLowerCase();
 	        		sum = 0;
 	    			$("." + lower).css("background-color", "#E8E8E8");
@@ -363,7 +245,7 @@ $(function(){
 			        			var commission = 0;
 			        			var completed = $(element).closest("tr").find(".Completed").text();
 			        			if(yesornoValue === "Yes" || yesornoValue === "No") {
-				        			if(text===inputValue && completed === yesornoValue) {
+				        			if(text===value && completed === yesornoValue) {
 				        				commission = Number($(element).closest("tr").find(".Commission").text());
 				        				$(element).closest("tr").show();
 			        				}
@@ -374,7 +256,7 @@ $(function(){
 			        			sumOfCommission(commission);
 
 			        			if(yesornoValue==="All") {
-				        			if(text===inputValue)
+				        			if(text===value)
 				        			{
 				        			commission = Number($(element).closest("tr").find(".Commission").text());
 				        			$(element).closest("tr").show();
