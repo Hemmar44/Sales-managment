@@ -5,7 +5,9 @@ $(function(){
 		var sum = 0;
 		var tableButtons = '</button><button type="button" id="delete" class="btn btn-warning btn-sm">Delete</button>'
 		var inputValue = "";
-		commission();
+		var min;
+		var max;
+		commissionOutcome();
 
 		//edit delete
 		var id;
@@ -34,7 +36,7 @@ $(function(){
 				success: function( msg ) {
 	    		tr.hide();
 	    		$("#fixed").html(msg).show().delay(5000).fadeOut();
-	  			commission();
+	  			commissionOutcome();
   				}
   			})
 		}
@@ -69,13 +71,13 @@ $(function(){
 			if(parent.hasClass("Amount")) {
 				commissionValue = Number(value)*Number(margin)
 				Commission.text(commissionValue);
-				commission();
+				commissionOutcome();
 			}
 
 			if(parent.hasClass("Margin")) {
 				commissionValue = Number(value)*Number(amount);
 				Commission.text(commissionValue);
-				commission();
+				commissionOutcome();
 			}
 
 			//alert(className);
@@ -146,9 +148,8 @@ $(function(){
        				 		$(element).closest("tr").hide();
        				 	}
        				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		
-        			 		//byProductAdvisorDate(element);
+        					var element = $(element);
+        					byAmountMarginCommission(element);
        				 	}
        				 });
        				}
@@ -197,9 +198,8 @@ $(function(){
        				 		$(element).closest("tr").hide();
        				 	}
        				 	if($(element).text() === yesornoValue) {
-       				 		var element = $(element);
-        			 		
-        			 		//byProductAdvisorDate(element);
+        					var element = $(element);
+        					byAmountMarginCommission(element);
        				 	}
        				 });
         			}
@@ -233,8 +233,12 @@ $(function(){
         			});
         			}
         			else if(globalValue === "Amount" || globalValue === "Margin" ||globalValue === "Commission"){
-        				
+        				$(".Completed").each(function(index, element){
+        				var element = $(element);
+        				byAmountMarginCommission(element);
+        			});
         			}
+
         			else {
         				
         				$("#dataTable tbody tr").show();
@@ -263,7 +267,11 @@ $(function(){
        				 	}
 
        			function byAmountMarginCommission(element) {
-       				
+       				   $(element).closest("tr").hide();
+       				   var value = Number($(element).siblings("." + globalValue).text());
+       				   if(value >= Number(min) && value <= Number(max)) {
+       				   		$(element).closest("tr").show();
+       				   }
        			}
 
         		
@@ -272,7 +280,7 @@ $(function(){
     		
     		$("#dataSelector").on("change", function() {
     			sum = 0;
-    			commission();
+    			//commissionOutcome();
     			$("#dataTable td, #dataTable th").css("background-color", "white");
     			globalValue = $(this).val();
     			if(globalValue === "Choose...")
@@ -393,8 +401,8 @@ $(function(){
         	//search by Amount, Margin, Commission
         		else if(globalValue==="Amount" || globalValue==="Margin" || globalValue==="Commission") {
         			
-        			var min = $("#min" + globalValue).val();       			
-        			var max = $("#max" + globalValue).val();
+        			min = $("#min" + globalValue).val();       			
+        			max = $("#max" + globalValue).val();
        				var lower = globalValue.toLowerCase();
 	    			
         			$("#min" + globalValue).on("keyup", function(){
@@ -482,7 +490,7 @@ $(function(){
         	});
         	//yes or no
 
-        	function commission() {
+        	function commissionOutcome() {
 				$(".Commission:visible").each(function(){
     				var commission = Number($(this).text());
     				sum += commission;
