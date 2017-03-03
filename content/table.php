@@ -1,7 +1,7 @@
 <table id="dataTable" class="table table-sm table-bordered">
 			  <thead>
 			    <tr>
-			      <th>Edit <br/> Delete</th>
+			      <th>Delete</th>
 			      <th class="name">Name</th>
 			      <th class="product">Product</th>
 			      <th class="institution">Institution</th>
@@ -16,7 +16,7 @@
 			  <tbody>
 			  	
 			  	<?php foreach($sales as $sale): ?>
-			  		<tr>
+			  		<tr class="rows">
 			  		<td class="id"><?= $sale['id']; ?></td>
 			  		<td class="Name"><?= $sale['name']; ?></td>
 			  		<td class="Product"><?= $sale['product']; ?></td>
@@ -32,3 +32,4 @@
 			   
 			  </tbody>
 			</table>
+<div id='fixed'>cos tam</div>

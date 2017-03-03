@@ -1,15 +1,16 @@
 $(function(){
 	//sum on other than name and product;
-		var yesornoValue;
+		var yesornoValue = $(".yesorno:checked").val();
 		var globalValue;
 		var sum = 0;
-		var tableButtons = '<button id="edit" type="button" class="btn btn-primary btn-sm">Edit</button><button type="button" id="delete" class="btn btn-warning btn-sm">Delete</button>'
+		var tableButtons = '</button><button type="button" id="delete" class="btn btn-warning btn-sm">Delete</button>'
 		commission();
 
 		//edit delete
 		var id;
 		$(".id")
 			.on("mouseenter", function(){
+				sum = 0;
 				id = $(this).text();
 				$(this).html(tableButtons);
 				
@@ -20,38 +21,85 @@ $(function(){
 			});
 
 		$(".id").on("click","#delete", function(){
+				sum = 0;
+				//needs to store it in a variable here, else it doesn't works with confirm!
+				tr=$(this).closest("tr");
 				if(confirm("Are you sure???")){
 				$.ajax({
 	  			method: "POST",
 	  			url: "ajax/Delete.php",
 	  			context: this,
 	  			data: { id: id },
-				success: function(msg) {
-	    		alert($(this).closest("tr").html());
-	  			}
+				success: function( msg ) {
+	    		tr.hide();
+	    		$("#fixed").html(msg).show().delay(5000).fadeOut();
+	  			commission();
+  				}
   			})
+		}
+		});
+
+		$(".id").siblings().on("dblclick", function(){
+			var text = $(this).text();
+			if($(this).hasClass("Commission")) {
+				alert("Don't try to change commission manualy, change amount ot margin instead");
+			}
+			else {
+			var edit = '<input type="text" name="edit" id="edit" value="'+ text + '">';
+			$(this).html(edit);
+			$("#edit").focus();
 			}
 		});
 
-		$(".id").on("click", "#edit", function(){
-			console.log("edit");
-		});
-		
-
-
-
-
-
+		$("tr").on("blur", "#edit", function(){
+			var value = $(this).val();
+			var amount = $(this).closest("tr").find(".Amount").text();
+			var margin = $(this).closest("tr").find(".Margin").text();
+			var Commission = $(this).closest('tr').find(".Commission");
+			var id = $(this).closest("tr").find(".id").text();
 			
+			sum = 0;
+			var parent = $(this).parent();
+			parent.text(value);
+			var className = parent.attr("class");
+			$(this).parent().text(value);
+			var commissionValue = Commission.text();
+
+			if(parent.hasClass("Amount")) {
+				commissionValue = Number(value)*Number(margin)
+				Commission.text(commissionValue);
+				commission();
+			}
+
+			if(parent.hasClass("Margin")) {
+				commissionValue = Number(value)*Number(amount);
+				Commission.text(commissionValue);
+				commission();
+			}
+
+			//alert(className);
+			
+			$.ajax({
+	  			method: "POST",
+	  			url: "ajax/Edit.php",
+	  			context: this,
+	  			data: { id: id, value: value, column: className, commission: commissionValue },
+				success: function( msg ) {
+					$("#fixed").html(msg).show().delay(5000).fadeOut();
+	    		
+	  			
+  				}
+  			})
+		});
 		
 		//yes or no
 		$(".yesorno").on("change", function(){
         		yesornoValue = $(this).val()
         		var dataSelector = $("#dataSelector").val();
-        		//alert(dataSelector)
+        		
         		
         		if(dataSelector==="Product" || dataSelector==="Advisor" || dataSelector === "Date") {
-        			//alert(dataSelector);
+        			
         			$("#searchBy" + dataSelector).val("Choose...").css("color", "red");
         		
         		}
@@ -315,14 +363,15 @@ $(function(){
 				$(".Commission:visible").each(function(){
     				var commission = Number($(this).text());
     				sum += commission;
-    				$("#sum").text(sum);
     			});
+    			$("#sum").text(sum.toFixed(2));
+    			
     		}
 			
     		function sumOfCommission(commission) {
 
     			sum += commission;
-    			$("#sum").text(sum);
+    			$("#sum").text(sum.toFixed(2));
 
     		}
 
@@ -332,7 +381,7 @@ $(function(){
     			var amount = $("#amount").val();
     			var margin = $("#margin").val();
 
-    			var commission = amount * margin; 
+    			var commission = (amount * margin).toFixed(2); 
 
     			$("#commission").val(commission);
     		});

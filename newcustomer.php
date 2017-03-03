@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Sale.php';
+require_once 'classes/Sale.php';
 
 $sale = new Sale($database);
 

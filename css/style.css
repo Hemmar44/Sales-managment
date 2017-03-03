@@ -34,3 +34,16 @@ header {
 	right:20px;
 	top: 40px;
 }
+
+#fixed {
+	position: fixed;
+	display: none;
+	height: 40px;
+	right:40px;
+	bottom:20px;
+	z-index: 10;
+	text-align: center;
+
+
+
+}
