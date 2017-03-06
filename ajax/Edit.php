@@ -7,6 +7,9 @@ require_once '/../classes/Sale.php';
 
 $sale = new Sale($database); 
 
+$messageTrue = "Database has been successfully updated";
+$messageFalse = "Nothing to update";
+
 $id = $_POST["id"];
 $key = lcfirst($_POST["column"]);
 $value = $_POST["value"];
@@ -19,35 +22,45 @@ if(isset($_POST["commission"])) {
 $commission = $_POST["commission"];
 }
 if($key === "completed") {
+	
+	$sale->properMessage($sale->database()->update("sales", $id, [
+						$key => $value
+						]), $messageTrue, $messageFalse);
+	/*
 
 	if($sale->database()->update("sales", $id, [
 		$key => $value
 		
 	])) {
-		//messages must change next!
-	echo '<div class="alert alert-success">Database has been successfully updated</div>';
+		$sale->success("Database has been successfully updated");
 	}
 	else {
 
-	echo '<div class="alert alert-warning">Nothing to update</div>';
+
+		$sale->failure("Nothing to update");
 
 	}
-
+	*/
 }
 else {
 
+	$sale->properMessage($sale->database()->update("sales", $id, [
+						$key => $value,
+						"commission" => $commission
+						]),$messageTrue, $messageFalse);
+	/*
 	if($sale->database()->update("sales", $id, [
 			$key => $value,
 			"commission" => $commission
 		])) {
 
-		echo '<div class="alert alert-success">Database has been successfully updated</div>';
+		$sale->success("Database has been successfully updated");
 	}
 	else {
 
-		echo '<div class="alert alert-warning">Nothing to update</div>';
-
+		$sale->failure("Nothing to update");
 	}
+	*/
 }
 
 

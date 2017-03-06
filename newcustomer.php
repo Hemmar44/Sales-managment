@@ -5,7 +5,9 @@ require_once 'classes/Sale.php';
 $sale = new Sale($database);
 
 //var_dump($_POST);
-
+//$submit = '';
+$messageTrue = "New customer has been added";
+$messageFalse = "Something was wrong";
 
 if($sale->database()->submitted()) {
 
@@ -20,14 +22,14 @@ if($sale->database()->submitted()) {
 	"commission" => floatval($_POST["commission"])
 	]);
 	
-	if($submit) {
-		$success = $sale->success();
-	}
-	else {
-		$failure = $sale->failure();
-	}
 }
 
+
+
+					
+
+					
+				
 
 
 
@@ -37,12 +39,11 @@ include("layouts/header.php");
 ?>
 			
 			<div class="message">
-				<?php
-					if(isset($success))
-						{echo '<div class="alert alert-success" role="alert">'. $success .'</div>';}
-					if(isset($failure))
-						{echo '<div class="alert alert-danger" role="alert"><strong>' .$failure .'</strong></div>';}
-				?>
+			<?php
+			if(isset($submit)){
+				$sale->properMessage($submit, $messageTrue, $messageFalse);
+				}
+			?>
 			</div>
 
 			<div class=col-md-12>

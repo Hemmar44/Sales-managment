@@ -17,14 +17,25 @@ class Sale {
 		return $this->database;
 	}
 
-	public function success() {
+	public function success($message) {
 
-		return "You have successfully added new customer.";
+		echo '<div class="alert alert-success">'. $message . '</div>';
 	}
 
-	public function failure() {
+	public function failure($message) {
 
-		return "Something was wrong, please try again later.";
+		echo '<div class="alert alert-warning">'. $message . '</div>';
+	}
+
+	public function properMessage($condition, $messageTrue, $messageFalse) {
+
+		if($condition){
+			echo '<div class="alert alert-success">'. $messageTrue . '</div>';
+		}
+		else {
+
+			echo '<div class="alert alert-warning">'. $messageFalse . '</div>';
+		}
 	}
 }
 

@@ -32,4 +32,4 @@
 			   
 			  </tbody>
 			</table>
-<div id='fixed'>cos tam</div>
+<div id='fixed'></div>

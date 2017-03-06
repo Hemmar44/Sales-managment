@@ -9,6 +9,8 @@ $(function(){
 		var max;
 		commissionOutcome();
 
+		
+
 		//edit delete
 		var id;
 		$(".id")
